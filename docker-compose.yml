@@ -1,0 +1,25 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: app_postgres
+    hostname: postgres
+    ports:
+      - 5445:5432
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: prisma
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: app_pgadmin
+    depends_on:
+      - postgres
+    ports:
+      - "5446:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    restart: always

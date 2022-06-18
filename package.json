@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "workspaces": [
-    "apps/**"
-  ],
   "scripts": {
     "start:api": "npx nx serve api",
     "start:web": "npx nx serve web --port 3001",
@@ -59,7 +56,6 @@
     "ts-node": "~10.8.0"
   },
   "dependencies": {
-    "@nrwl/next": "14.3.6",
     "core-js": "^3.6.5",
     "express": "4.17.2",
     "next": "12.1.6",
