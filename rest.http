@@ -1,0 +1,38 @@
+
+GET  http://localhost:3333/users
+
+###
+
+POST http://localhost:3333/users
+content-type: application/json
+
+{
+    "email": "email2@gmail.com",
+    "name": "user 1",
+    "role":"USER",
+    "posts" : [
+        {
+            "title": "post 1",
+            "published": true
+        },
+        {
+            "title": "post 2",
+            "published": false
+        }
+    ]
+}
+
+###
+PATCH http://localhost:3333/users/3
+content-type: application/json
+
+{
+    "name": "new name"
+}
+
+###
+DELETE http://localhost:3333/users/4
+
+
+###
+GET http://localhost:3333/users/5

@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: prisma
+      POSTGRES_DB: app_demo
     restart: always
 
   pgadmin:
@@ -20,6 +20,28 @@ services:
     ports:
       - "5446:80"
     environment:
-      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
       PGADMIN_DEFAULT_PASSWORD: admin
     restart: always
+
+  app-db:
+    image: mariadb:10.6
+    hostname: app-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app-demo
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    ports:
+      - 3339:3306
+    volumes:
+      - ./db_data:/var/lib/mysql
+
+  app-adminer:
+    hostname: app-adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8039:8080
+    depends_on:
+      - app-db
