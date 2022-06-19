@@ -17,7 +17,6 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/users", async (req, res) => {
-  console.log("====run====");
   try {
     const { email, name, posts, role } = req.body;
     const user: User = await prisma.user.create({
